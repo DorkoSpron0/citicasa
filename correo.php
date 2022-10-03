@@ -12,9 +12,13 @@ if (isset($_POST['enviar'])) {
 	$seccion = $_POST['seccion'];
 	$time = $_POST['time'];
 
-	$headers.= "From: y2kdsp@gmail.com \r\n";
-	$headers.= "Reply-To: y2kdsp@gmail.com \r\n";
-
+	$headers =  "MIME-Version: 1.0 \r\n";
+	$headers.=  "Content-type: text/html; charset=utf-8\r\n";
+	$headers.= "From: $nombre $apellidos <$correo> \r\n";
+	$headers.= "To: Sitio Web <manuela.betancurmiranda@inemjose.edu.co> \r\n";
+	$headers.= "Cc: copia@inemjose.edu.co \r\n";
+	$headers.= "Bcc: copia@inemjose.edu.co\r\n";
+	$headers.= "X_Mailer: PHP/".phpversion();
 	$mail = @mail($correo, $asunto, $motivo);
 
 	if($mail)
